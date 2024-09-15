@@ -1,6 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Post } from './interfaces/post.interface';
+import { PostResponse } from './interfaces/postResponse.interface';
 
 @Controller('posts')
 export class PostsController {
@@ -12,7 +13,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  public async findOne(@Param('id', ParseIntPipe) id: number): Promise<Post> {
+  public async findOne(@Param('id', ParseIntPipe) id: number): Promise<PostResponse> {
     return this.postsService.findOne(id);
   }
 }
